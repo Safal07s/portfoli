@@ -1,3 +1,5 @@
+<?php require("admin/config/config.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

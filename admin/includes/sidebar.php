@@ -28,6 +28,23 @@
       </li>
     </ul>
   </li><!-- End Forms Nav -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-journal-text"></i><span>Files</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="../files/create.php">
+          <i class="bi bi-circle"></i><span>Add File</span>
+        </a>
+      </li>
+      <li>
+        <a href="../files/index.php">
+          <i class="bi bi-circle"></i><span>Manage Files</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Forms Nav -->
 
 
   <li class="nav-heading">Pages</li>
