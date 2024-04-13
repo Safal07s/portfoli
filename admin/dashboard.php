@@ -1,4 +1,5 @@
 <?php require('config/config.php'); ?>
+<?php require('auth/secure.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>Dashboard </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -31,13 +32,6 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Updated: Apr 7 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -118,7 +112,7 @@
         </li>
 
         <li>
-          <a class="dropdown-item d-flex align-items-center" href="#">
+          <a class="dropdown-item d-flex align-items-center" href="auth/logout-process.php">
             <i class="bi bi-box-arrow-right"></i>
             <span>Sign Out</span>
           </a>
@@ -138,7 +132,7 @@
 <ul class="sidebar-nav" id="sidebar-nav">
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="index.html">
+    <a class="nav-link collapsed" href="dashboard.php">
       <i class="bi bi-grid"></i>
       <span>Dashboard</span>
     </a>
@@ -162,6 +156,43 @@
       </li>
     </ul>
   </li><!-- End Forms Nav -->
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-journal-text"></i><span>Abouts</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="abouts/create.php">
+          <i class="bi bi-circle"></i><span>Create Abouts</span>
+        </a>
+      </li>
+      <li>
+        <a href="abouts/index.php">
+          <i class="bi bi-circle"></i><span>Manage Abouts</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Forms Nav -->
+  
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#users" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-journal-text"></i><span>Skills</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="users" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="skills/create.php">
+          <i class="bi bi-circle"></i><span>Create Skills</span>
+        </a>
+      </li>
+      <li>
+        <a href="skills/index.php">
+          <i class="bi bi-circle"></i><span>Manage Skills</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Forms Nav -->
+
   <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
       <i class="bi bi-journal-text"></i><span>files</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -169,17 +200,52 @@
     <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
         <a href="files/create.php">
-          <i class="bi bi-circle"></i><span>Create User</span>
+          <i class="bi bi-circle"></i><span>Add Files</span>
         </a>
       </li>
       <li>
         <a href="files/index.php">
-          <i class="bi bi-circle"></i><span>Manage Users</span>
+          <i class="bi bi-circle"></i><span>Manage Files</span>
         </a>
       </li>
     </ul>
   </li><!-- End Forms Nav -->
 
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-journal-text"></i><span>Facts</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="facts/create.php">
+          <i class="bi bi-circle"></i><span>Add Facts</span>
+        </a>
+      </li>
+      <li>
+        <a href="facts/index.php">
+          <i class="bi bi-circle"></i><span>Manage Facts</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Forms Nav -->
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-journal-text"></i><span>Services</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="services/create.php">
+          <i class="bi bi-circle"></i><span>Add Services</span>
+        </a>
+      </li>
+      <li>
+        <a href="services/index.php">
+          <i class="bi bi-circle"></i><span>Manage Services</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Forms Nav -->
 
   <li class="nav-heading">Pages</li>
 
@@ -235,7 +301,7 @@
       <h1>Dashboard</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
           <li class="breadcrumb-item active">Dashboard</li>
         </ol>
       </nav>

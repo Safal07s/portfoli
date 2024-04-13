@@ -6,12 +6,24 @@
 
 
 <main id="main" class="main">
+<?php
+    if (isset($_GET['delete'])) {
+    ?>
+        <div class=" container alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data is Deleted!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+    // header("Refresh:2; URL=index.php");
+    echo "<meta http-equiv=\"refresh\" content=\"2;URL=index.php\">";
+    }
+    ?>
 
   <div class="pagetitle">
     <h1>Manage Files</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
         <li class="breadcrumb-item">Files</li>
         <li class="breadcrumb-item active">Manage Files</li>
       </ol>
@@ -42,17 +54,17 @@
 
                 $select = 'SELECT *FROM files';
                 $result = mysqli_query($con, $select);
-$i=1;
+                $i = 1;
                 while ($data = $result->fetch_assoc()) {
                 ?>
                   <tr>
                     <td><?php echo $i++; ?></td>
-                    <td><?php echo $data['title'] ;?></td>
-                    <td><?php echo $data['description'] ;?></td>
+                    <td><?php echo $data['title']; ?></td>
+                    <td><?php echo $data['description']; ?></td>
                     <td><img src="../uploads/<?php echo $data['img_link'] ?>" alt="" width="100" height="100"></td>
                     <td>
-                      <a class="btn btn-primary btn-sm " href="#" role="button">Edit </a>
-                      <a class="btn btn-danger btn-sm " href="#" role="button">Delete </a>
+                      <a class="btn btn-primary btn-sm " href="edit.php" role="button">Edit </a>
+                      <a class="btn btn-danger btn-sm " onclick="return confirm ('Do you want to delete this data?');" href="delete.php" role="button">Delete </a>
                     </td>
                   </tr>
                 <?php

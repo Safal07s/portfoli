@@ -11,7 +11,7 @@
     if (isset($_GET['delete'])) {
     ?>
         <div class=" container alert alert-success alert-dismissible fade show" role="alert">
-            <strong>User is Deleted!</strong>
+            <strong>Facts is Deleted!</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php
@@ -21,12 +21,12 @@
     ?>
 
   <div class="pagetitle">
-    <h1>Manage Users</h1>
+    <h1>Manage Facts</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">Users</li>
-        <li class="breadcrumb-item active">Manage Users</li>
+        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+        <li class="breadcrumb-item">Facts</li>
+        <li class="breadcrumb-item active">Manage Facts</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -37,7 +37,7 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Manage Users</h5>
+            <h5 class="card-title">Manage Facts</h5>
 
             <!-- Table with stripped rows -->
             <table class="table datatable">
@@ -46,27 +46,25 @@
                   <th>
                     #
                   </th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Username</th>
+                  <th>Numbers</th>
+                  <th>Title</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
 
-                $select = 'SELECT *FROM users';
+                $select = 'SELECT *FROM facts';
                 $result = mysqli_query($con, $select);
                 $i = 1;
                 while ($data = $result->fetch_assoc()) {
                 ?>
                   <tr>
                     <td><?php echo $i++; ?></td>
-                    <td><?php echo $data['name']; ?></td>
-                    <td><?php echo $data['email']; ?></td>
-                    <td><?php echo $data['username']; ?></td>
+                    <td><?php echo $data['numbers']; ?></td>
+                    <td><?php echo $data['title']; ?></td>
                     <td>
-                      <a class="btn btn-primary btn-sm " href="edit.php?id=<?php echo $data['id']; ?>" role="button">Edit </a>
+                      <a class="btn btn-primary btn-sm " href="edit.php" role="button">Edit </a>
                       <a class="btn btn-danger btn-sm " onclick="return confirm('Do you want to delete this user?');" href="delete.php?id=<?php echo $data['id']; ?>">Delete </a>
                     </td>
                   </tr>

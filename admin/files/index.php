@@ -42,13 +42,13 @@
 
                 $select = 'SELECT *FROM files';
                 $result = mysqli_query($con, $select);
-$i=1;
+                $i = 1;
                 while ($data = $result->fetch_assoc()) {
                 ?>
                   <tr>
                     <td><?php echo $i++; ?></td>
-                    <td><?php echo $data['title'] ;?></td>
-                    <td><?php echo $data['description'] ;?></td>
+                    <td><?php echo $data['title']; ?></td>
+                    <td><?php echo $data['description']; ?></td>
                     <td><img src="../uploads/<?php echo $data['img_link'] ?>" alt="" width="100" height="100"></td>
                     <td>
                       <a class="btn btn-primary btn-sm " href="#" role="button">Edit </a>

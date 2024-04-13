@@ -7,12 +7,12 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Form Layouts</h1>
+    <h1>Create Files</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">Forms</li>
-        <li class="breadcrumb-item active">Layouts</li>
+        <li class="breadcrumb-item">Files</li>
+        <li class="breadcrumb-item active">Add File</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -23,7 +23,7 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Multi Columns Form</h5>
+            <h5 class="card-title">Add Files</h5>
 
 
             <?php

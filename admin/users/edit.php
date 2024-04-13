@@ -7,12 +7,12 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Create Users</h1>
+    <h1>Update Users</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
         <li class="breadcrumb-item">Users</li>
-        <li class="breadcrumb-item active">Create Users</li>
+        <li class="breadcrumb-item active">Update Users</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -23,34 +23,43 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Create Users</h5>
+            <h5 class="card-title">Update Users</h5>
 
             <?php
+            if (isset($_GET['id'])) {
+              $id = $_GET['id'];
+              $show_query = "SELECT *FROM users WHERE id='$id'";
+              $show_result = mysqli_query($con, $show_query);
+              // To get only one row data
+              $data = mysqli_fetch_assoc($show_result);
+              // $data = $show_result->fetch_assoc();
+            }
 
             if (isset($_POST['submit'])) {
               $name = $_POST['name'];
               $email = $_POST['email'];
               $username = $_POST['username'];
-              $password = md5($_POST['password']);
+              // $password = $_POST['password'];
 
-              if ($name != ""  && $email != "" && $username != "" && $password != "") {
-                $insert = "INSERT INTO users(name, email, username, password)
-VALUES('$name',  '$email', '$username', '$password')";
-                $result = mysqli_query($con, $insert);
+              // validation to input field
+              if ($name != "" && $email != "" && $username != "") {
+                $query = " UPDATE users SET name='$name', email='$email', username='$username' WHERE id='$id'"; // variable
+                $result = mysqli_query($con, $query); // connect to database
+
+
 
                 if ($result) {
             ?>
                   <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>User is created</strong>
+                    <strong>User is Updated</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
                 <?php
-                  // header("Refresh:2; URL=index.php?success");
-                  echo "<meta http-equiv=\"refresh\" content=\"2;URL=index.php\">";
+                  header("Refresh:2; URL=index.php?success");
                 } else {
                 ?>
                   <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>User is not created</strong>
+                    <strong>User is not Updated</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
             <?php
@@ -69,20 +78,20 @@ VALUES('$name',  '$email', '$username', '$password')";
             <form class="row g-3" action="" method="POST" enctype="multipart/form-data">
               <div class="col-md-6">
                 <label for="inputName5" class="form-label">Your Name</label>
-                <input type="text" class="form-control" name="name" id="inputName5">
+                <input type="text" class="form-control" name="name" value="<?php echo  $data['name']; ?>" id="inputName5">
               </div>
               <div class="col-md-6">
                 <label for="inputEmail5" class="form-label">Email</label>
-                <input type="email" class="form-control" name="email" id="inputEmail5">
+                <input type="email" class="form-control" name="email" value="<?php echo  $data['email']; ?>" id="inputEmail5">
               </div>
               <div class="col-md-6">
                 <label for="inputPassword5" class="form-label">Username</label>
-                <input type="text" class="form-control" name="username" id="inputPassword5">
+                <input type="text" class="form-control" name="username" value="<?php echo  $data['username']; ?>" id="inputPassword5">
               </div>
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <label for="inputPassword5" class="form-label">Password</label>
                 <input type="password" class="form-control" name="password" id="inputPassword5">
-              </div>
+              </div> -->
               <!-- <div class="col-md-6">
                   <label for="inputAddress5" class="form-label">Address</label>
                   <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St">

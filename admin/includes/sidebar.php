@@ -4,7 +4,7 @@
 <ul class="sidebar-nav" id="sidebar-nav">
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="index.html">
+    <a class="nav-link collapsed" href="../dashboard.php">
       <i class="bi bi-grid"></i>
       <span>Dashboard</span>
     </a>
@@ -28,6 +28,44 @@
       </li>
     </ul>
   </li><!-- End Forms Nav -->
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-journal-text"></i><span>Abouts</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="../abouts/create.php">
+          <i class="bi bi-circle"></i><span>Create Abouts</span>
+        </a>
+      </li>
+      <li>
+        <a href="../abouts/index.php">
+          <i class="bi bi-circle"></i><span>Manage Abouts</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Forms Nav -->
+
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-journal-text"></i><span>Skills</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="../skills/create.php">
+          <i class="bi bi-circle"></i><span>Create Skills</span>
+        </a>
+      </li>
+      <li>
+        <a href="../skills/index.php">
+          <i class="bi bi-circle"></i><span>Manage Skills</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Forms Nav -->
+
   <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
       <i class="bi bi-journal-text"></i><span>Files</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -41,6 +79,43 @@
       <li>
         <a href="../files/index.php">
           <i class="bi bi-circle"></i><span>Manage Files</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Forms Nav -->
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-journal-text"></i><span>Facts</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="../facts/create.php">
+          <i class="bi bi-circle"></i><span>Add Facts</span>
+        </a>
+      </li>
+      <li>
+        <a href="../facts/index.php">
+          <i class="bi bi-circle"></i><span>Manage Facts</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Forms Nav -->
+
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-journal-text"></i><span>Services</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="../services/create.php">
+          <i class="bi bi-circle"></i><span>Add Services</span>
+        </a>
+      </li>
+      <li>
+        <a href="../services/index.php">
+          <i class="bi bi-circle"></i><span>Manage Services</span>
         </a>
       </li>
     </ul>

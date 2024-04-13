@@ -7,12 +7,12 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Create Users</h1>
+    <h1>Create Facts</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-        <li class="breadcrumb-item">Users</li>
-        <li class="breadcrumb-item active">Create Users</li>
+        <li class="breadcrumb-item">Facts</li>
+        <li class="breadcrumb-item active">Create Facts</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -23,25 +23,26 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Create Users</h5>
+            <h5 class="card-title">Create Facts</h5>
 
             <?php
 
             if (isset($_POST['submit'])) {
-              $name = $_POST['name'];
-              $email = $_POST['email'];
-              $username = $_POST['username'];
-              $password = md5($_POST['password']);
+              $numbers = $_POST['numbers'];
+              $title = $_POST['title'];
+              // $description = $_POST['description'];
+              // $username = $_POST['username'];
+              // $password = md5($_POST['password']);
 
-              if ($name != ""  && $email != "" && $username != "" && $password != "") {
-                $insert = "INSERT INTO users(name, email, username, password)
-VALUES('$name',  '$email', '$username', '$password')";
+              if ($numbers != "" && $title != "") {
+                $insert = "INSERT INTO facts(numbers, title)
+VALUES('$numbers', '$title')";
                 $result = mysqli_query($con, $insert);
 
                 if ($result) {
             ?>
                   <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>User is created</strong>
+                    <strong>Facts are created</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
                 <?php
@@ -50,11 +51,12 @@ VALUES('$name',  '$email', '$username', '$password')";
                 } else {
                 ?>
                   <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>User is not created</strong>
+                    <strong>Facts is not created</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
             <?php
-                  header("Refresh:2; URL=create.php?error");
+                  // header("Refresh:2; URL=create.php?error");
+                  echo "<meta http-equiv=\"refresh\" content=\"2;URL=create.php?error\">";
                 }
               } else {
 
@@ -68,25 +70,16 @@ VALUES('$name',  '$email', '$username', '$password')";
             <!-- Multi Columns Form -->
             <form class="row g-3" action="" method="POST" enctype="multipart/form-data">
               <div class="col-md-6">
-                <label for="inputName5" class="form-label">Your Name</label>
-                <input type="text" class="form-control" name="name" id="inputName5">
+                <label for="inputName5" class="form-label">Numbers</label>
+                <input type="text" class="form-control" name="numbers" id="inputName5">
               </div>
               <div class="col-md-6">
-                <label for="inputEmail5" class="form-label">Email</label>
-                <input type="email" class="form-control" name="email" id="inputEmail5">
+                <label for="inputName5" class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" id="inputName5">
               </div>
-              <div class="col-md-6">
-                <label for="inputPassword5" class="form-label">Username</label>
-                <input type="text" class="form-control" name="username" id="inputPassword5">
-              </div>
-              <div class="col-md-6">
-                <label for="inputPassword5" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password" id="inputPassword5">
-              </div>
-              <!-- <div class="col-md-6">
-                  <label for="inputAddress5" class="form-label">Address</label>
-                  <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St">
-                </div> -->
+              
+             
+              
               <div class="col-md-12">
                 <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                 <button type="reset" class="btn btn-secondary">Reset</button>
