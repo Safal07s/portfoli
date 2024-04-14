@@ -80,7 +80,8 @@ VALUES('$icon','$title',  '$description')";
               <div class="col-md-6">
                 <!-- <textarea name="description" id="" cols="30" rows="10">Description</textarea> -->
                 <label for="inputEmail5" class="form-label">Description</label>
-                <input type="textarea" class="form-control" name="description" id="inputEmail5">
+                <textarea name="description" class="form-control" id="inputEmail5" cols="30" rows="3"></textarea>
+                <!-- <input type="textarea" class="form-control" name="description" id="inputEmail5"> -->
               </div>
              
               

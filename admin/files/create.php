@@ -86,8 +86,6 @@
               </div>
 
               <button type="submit" class="btn btn-danger btn-sm" name="submit">Submit</button>
-              <span> Have already an account <a href="index.php"> Login</a></span>
-
             </form>
           </div>
         </div>

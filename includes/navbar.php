@@ -8,7 +8,7 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="active" href="index.php">Home</a></li>
+          <li><a class="" href="index.php">Home</a></li>
           <li><a href="about.php">About</a></li>
           <li><a href="resume.php">Resume</a></li>
           <li><a href="services.php">Services</a></li>
@@ -20,7 +20,7 @@
 
       <div class="header-social-links">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https//www.facebook.com/" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
         <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
       </div>

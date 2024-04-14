@@ -7,12 +7,12 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Create Facts</h1>
+    <h1>Create Settings</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-        <li class="breadcrumb-item">Facts</li>
-        <li class="breadcrumb-item active">Create Facts</li>
+        <li class="breadcrumb-item">Setings</li>
+        <li class="breadcrumb-item active">Create Setings</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -23,26 +23,25 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Create Facts</h5>
+            <h5 class="card-title">Create Settings</h5>
 
             <?php
 
             if (isset($_POST['submit'])) {
-              $numbers = $_POST['numbers'];
-              $title = $_POST['title'];
-              // $description = $_POST['description'];
+              $site_key = $_POST['site_key'];
+              $site_value = $_POST['site_value'];
               // $username = $_POST['username'];
               // $password = md5($_POST['password']);
 
-              if ($numbers != "" && $title != "") {
-                $insert = "INSERT INTO facts(numbers, title)
-VALUES('$numbers', '$title')";
+              if ($site_key != ""  && $site_value != "" ) {
+                $insert = "INSERT INTO settings(site_key, site_value)
+VALUES('$site_key',  '$site_value')";
                 $result = mysqli_query($con, $insert);
 
                 if ($result) {
             ?>
                   <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Facts are created</strong>
+                    <strong>Settings is created</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
                 <?php
@@ -51,7 +50,7 @@ VALUES('$numbers', '$title')";
                 } else {
                 ?>
                   <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Facts is not created</strong>
+                    <strong>Settings is not created</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
             <?php
@@ -69,15 +68,15 @@ VALUES('$numbers', '$title')";
 
             <!-- Multi Columns Form -->
             <form class="row g-3" action="" method="POST" enctype="multipart/form-data">
-              <div class="col-md-6">
-                <label for="inputName5" class="form-label">Numbers</label>
-                <input type="number" class="form-control" name="numbers" id="inputName5">
+              <div class="mb-3">
+                <label for="inputName5" class="form-label">Site_key</label>
+                <input type="text" class="form-control" name="site_key" id="inputName5">
               </div>
-              <div class="col-md-6">
-                <label for="inputName5" class="form-label">Title</label>
-                <input type="text" class="form-control" name="title" id="inputName5">
+              <div class="mb-3">
+                <label for="inputName5" class="form-label">Site_value</label>
+                <input type="text" class="form-control" name="site_value" id="inputName5">
               </div>
-              
+             
              
               
               <div class="col-md-12">

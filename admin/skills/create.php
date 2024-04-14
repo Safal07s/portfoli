@@ -68,14 +68,14 @@ VALUES('$title',  '$description')";
 
             <!-- Multi Columns Form -->
             <form class="row g-3" action="" method="POST" enctype="multipart/form-data">
-              <div class="col-md-6">
+              <div class="mb-3">
                 <label for="inputName5" class="form-label">Title</label>
                 <input type="text" class="form-control" name="title" id="inputName5">
               </div>
-              <div class="col-md-6">
-                <!-- <textarea name="description" id="" cols="30" rows="10">Description</textarea> -->
-                <label for="inputEmail5" class="form-label">Description</label>
-                <input type="textarea" class="form-control" name="description" id="inputEmail5">
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                <textarea class="form-control" name="description" id="exampleFormControlTextarea1" cols="30" rows="3"></textarea>
+                <!-- <input type="textarea" class="form-control" name="description" id="inputEmail5"> -->
               </div>
              
               

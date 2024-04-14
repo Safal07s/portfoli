@@ -40,6 +40,8 @@
                 $title = $_POST['title'];
                 // $password = $_POST['password'];
 
+          
+
                 // validation to input field
             if($numbers!="" && $title!= "" ){
                 $query =" UPDATE facts SET numbers='$numbers', title='$title'   WHERE id='$id'"; // variable
@@ -54,7 +56,9 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         <?php
-                            header("Refresh:2; URL=index.php?success");
+                            // header("Refresh:2; URL=index.php?success");
+                            echo "<meta http-equiv=\"refresh\" content=\"2;URL=index.php?suucces\">";
+
                         } else {
                         ?>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -75,16 +79,16 @@
 
 
             <!-- Multi Columns Form -->
+            <a class="btn btn-success btn-sm " href="index.php" role="button">Manage Facts </a>
             <form class="row g-3" action="" method="POST" enctype="multipart/form-data">
               <div class="col-md-6">
                 <label for="inputName5" class="form-label">Numbers</label>
-                <input type="text" class="form-control" name="title" value="<?php echo $data['numbers']; ?>" id="inputName5">
+                <input type="number" class="form-control" name="numbers" value="<?php echo $data['numbers']; ?>" id="inputName5">
               </div>
               <div class="col-md-6">
                 <label for="inputName5" class="form-label">Title</label>
                 <input type="text" class="form-control" name="title" value="<?php echo $data['title']; ?>" id="inputName5">
               </div>
-             
              
               
               <div class="col-md-12">

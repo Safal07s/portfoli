@@ -24,7 +24,7 @@
     <h1>Manage Users</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
         <li class="breadcrumb-item">Users</li>
         <li class="breadcrumb-item active">Manage Users</li>
       </ol>
@@ -40,6 +40,8 @@
             <h5 class="card-title">Manage Users</h5>
 
             <!-- Table with stripped rows -->
+            <a class="btn btn-primary btn-sm " href="create.php" role="button">Add Users </a>
+            
             <table class="table datatable">
               <thead>
                 <tr>

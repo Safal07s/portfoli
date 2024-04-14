@@ -6,6 +6,18 @@
 
 
 <main id="main" class="main">
+<?php
+    if (isset($_GET['delete'])) {
+    ?>
+        <div class=" container alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data is Deleted!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+    // header("Refresh:2; URL=index.php");
+    echo "<meta http-equiv=\"refresh\" content=\"2;URL=index.php\">";
+    }
+    ?>
 
   <div class="pagetitle">
     <h1>Manage Files</h1>
@@ -28,6 +40,8 @@
 
             <!-- Table with stripped rows -->
             <table class="table datatable">
+            <a class="btn btn-primary btn-sm " href="create.php" role="button">Add Files </a>
+
               <thead>
                 <tr>
                   <th>#</th>
@@ -51,8 +65,8 @@
                     <td><?php echo $data['description']; ?></td>
                     <td><img src="../uploads/<?php echo $data['img_link'] ?>" alt="" width="100" height="100"></td>
                     <td>
-                      <a class="btn btn-primary btn-sm " href="#" role="button">Edit </a>
-                      <a class="btn btn-danger btn-sm " href="#" role="button">Delete </a>
+                      <a class="btn btn-primary btn-sm " href="edit.php?id=<?php echo $data['id']; ?>" role="button">Edit </a>
+                      <a class="btn btn-danger btn-sm " onclick="return confirm('Do you want to delete this file?');" href="delete.php?id=<?php echo $data['id']; ?>" role="button">Delete </a>
                     </td>
                   </tr>
                 <?php

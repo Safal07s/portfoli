@@ -27,55 +27,59 @@
 
             <?php
             if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                $show_query = "SELECT *FROM services WHERE id='$id'";
-                $show_result = mysqli_query($con, $show_query);
-                // To get only one row data
-                $data = mysqli_fetch_assoc($show_result);
-                // $data = $show_result->fetch_assoc();
+              $id = $_GET['id'];
+              $show_query = "SELECT *FROM services WHERE id='$id'";
+              $show_result = mysqli_query($con, $show_query);
+              // To get only one row data
+              $data = mysqli_fetch_assoc($show_result);
+              // $data = $show_result->fetch_assoc();
             }
-            
-            if(isset($_POST['submit'])){
-                $icon = $_POST['icon'];
-                $title = $_POST['title'];
-                $description = $_POST['description'];
-                // $password = $_POST['password'];
 
-                // validation to input field
-            if($icon!="" && $title!= "" && $description!="" ){
-                $query =" UPDATE services SET icon='$icon'; title='$title', description='$description'  WHERE id='$id'"; // variable
-                $result= mysqli_query ($con, $query); // connect to database
-                
+            if (isset($_POST['submit'])) {
+              $icon = $_POST['icon'];
+              $title = $_POST['title'];
+              $description = $_POST['description'];
+              // $password = $_POST['password'];
 
-        
-            if ($result) {
-                ?>
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong>Services is Updated</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php
-                            header("Refresh:2; URL=index.php?success");
-                        } else {
-                        ?>
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>Services is not Updated</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
+              // validation to input field
+              if ($icon != "" && $title != "" && $description != "") {
+                $query = " UPDATE services SET icon='$icon', title='$title', description='$description'  WHERE id='$id'"; // variable
+                $result = mysqli_query($con, $query); // connect to database
+
+
+
+                if ($result) {
+            ?>
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Services is Updated</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
                 <?php
-                            header("Refresh:2; URL=create.php?error");
-                        }
-                    } else {
+                  echo "<meta http-equiv=\"refresh\" content=\"2;URL=index.php?suucces\">";
 
-                        header("Refresh:0; URL=create.php?empty");
-                    }
-                }
-
+                  // header("Refresh:2; URL=index.php?success");  
+                } else {
                 ?>
-  
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Services is not Updated</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+            <?php
+                  header("Refresh:2; URL=create.php?error");
+                }
+              } else {
+
+                header("Refresh:0; URL=create.php?empty");
+              }
+            }
+
+            ?>
+
 
 
             <!-- Multi Columns Form -->
+            <a class="btn btn-success btn-sm " href="index.php" role="button">Manage Services </a>
+
             <form class="row g-3" action="" method="POST" enctype="multipart/form-data">
               <div class="col-md-6">
                 <label for="inputName5" class="form-label">Icon</label>
@@ -88,13 +92,12 @@
               <div class="col-md-6">
                 <!-- <textarea name="description" id="" cols="30" rows="10">Description</textarea> -->
                 <label for="inputEmail5" class="form-label">Description</label>
-                <input type="textarea" class="form-control" name="description" value="<?php echo $data['description']; ?>" id="inputEmail5">
+                <textarea name="description" class="form-control" id="inputEmail5" cols="30" rows="3"><?php echo $data['description']; ?></textarea>
               </div>
-             
-              
+
+
               <div class="col-md-12">
                 <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
               </div>
             </form><!-- End Multi Columns Form -->
 

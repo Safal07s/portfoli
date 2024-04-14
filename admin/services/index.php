@@ -40,6 +40,8 @@
             <h5 class="card-title">Manage Services</h5>
 
             <!-- Table with stripped rows -->
+            <a class="btn btn-primary btn-sm " href="create.php" role="button">Add Services </a>
+
             <table class="table datatable">
               <thead>
                 <tr>
@@ -66,7 +68,7 @@
                     <td><?php echo $data['title']; ?></td>
                     <td><?php echo $data['description']; ?></td>
                     <td>
-                      <a class="btn btn-primary btn-sm " href="edit.php" role="button">Edit </a>
+                      <a class="btn btn-primary btn-sm " href="edit.php?id=<?php echo $data['id']; ?>" role="button">Edit </a>
                       <a class="btn btn-danger btn-sm " onclick="return confirm('Do you want to delete this user?');" href="delete.php?id=<?php echo $data['id']; ?>">Delete </a>
                     </td>
                   </tr>

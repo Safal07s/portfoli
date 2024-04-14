@@ -7,12 +7,12 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Update Files</h1>
+    <h1>Update Settings</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">Files</li>
-        <li class="breadcrumb-item active">Update File</li>
+        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+        <li class="breadcrumb-item">Setings</li>
+        <li class="breadcrumb-item active">Update Setings</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -23,12 +23,12 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Update Files</h5>
+            <h5 class="card-title">Update Settings</h5>
 
             <?php
             if (isset($_GET['id'])) {
                 $id = $_GET['id'];
-                $show_query = "SELECT *FROM files WHERE id='$id'";
+                $show_query = "SELECT *FROM settings WHERE id='$id'";
                 $show_result = mysqli_query($con, $show_query);
                 // To get only one row data
                 $data = mysqli_fetch_assoc($show_result);
@@ -36,14 +36,12 @@
             }
             
             if(isset($_POST['submit'])){
-                $title = $_POST['title'];
-                $description = $_POST['description'];
-                $img = $_POST['img_link'];
+                $site_value = $_POST['site_value'];
                 // $password = $_POST['password'];
 
                 // validation to input field
-            if($title!= "" && $description!="" && $img !="" ){
-                $query =" UPDATE files SET title='$title', description='$description', img-link='$img'  WHERE id='$id'"; // variable
+            if( $site_value!="" ){
+                $query =" UPDATE settings SET site_value='$site_value'  WHERE id='$id'"; // variable
                 $result= mysqli_query ($con, $query); // connect to database
                 
 
@@ -51,7 +49,7 @@
             if ($result) {
                 ?>
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong>Files is Updated</strong>
+                                <strong>Settings is Updated</strong>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         <?php
@@ -60,7 +58,7 @@
                         } else {
                         ?>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>Files is not Updated</strong>
+                                <strong>Settings is not Updated</strong>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                 <?php
@@ -69,31 +67,33 @@
                     } else {
 
                         header("Refresh:0; URL=create.php?empty");
-                        // echo "<meta http-equiv=\"refresh\" content=\"2;URL=.php?empty\">";
-
                     }
                 }
 
                 ?>
-      
-      <a class="btn btn-success btn-sm " href="index.php" role="button">Manage Files </a>
-            <form action="" method="POST" enctype="multipart/form-data">
-              <div class="mb-3">
-                <label for="input1" class="form-label">Title</label>
-                <input type="text" class="form-control" name="title" value="<?php echo $data['title']; ?>" id="input1" aria-describedby="emailHelp">
-              </div>
-              <div class="mb-3">
-                <label for="input1" class="form-label">Image</label>
-                <input type="file" class="form-control" name="dataFile" value="<?php echo $data['img_link']; ?>" id="input1" aria-describedby="emailHelp">
-              </div>
 
-              <div class="mb-3">
-                <label for="input1" class="form-label">Description</label>
-                <textarea class="form-control" id="input1" name="description"  rows="3"><?php echo $data['description']; ?></textarea>
-              </div>
 
-              <button type="submit" class="btn btn-danger btn-sm" name="submit">Submit</button>
-            </form>
+            <!-- Multi Columns Form -->
+            <a class="btn btn-success btn-sm " href="index.php" role="button">Manage Settings </a>
+
+            <form class="row g-3" action="" method="POST" enctype="multipart/form-data">
+              <div class="mb-3">
+                <label for="inputName5" class="form-label">Site_key</label>
+                <input type="text" class="form-control" readonly  value="<?php echo $data['site_key']; ?>" id="inputName5">
+              </div>
+              <div class="mb-3">
+                <label for="inputName5" class="form-label">Site_value</label>
+                <input type="text" class="form-control" name="site_value" value="<?php echo $data['site_value']; ?>" id="inputName5">
+              </div>
+             
+             
+              
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+              </div>
+            </form><!-- End Multi Columns Form -->
+
           </div>
         </div>
 

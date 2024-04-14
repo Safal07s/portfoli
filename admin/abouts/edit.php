@@ -70,6 +70,7 @@
             }
 
             ?>
+            <a class="btn btn-success btn-sm " href="index.php" role="button">Manage abouts </a>
             <form action="" method="POST" enctype="multipart/form-data">
               <div class="mb-3">
                 <label for="input1" class="form-label">Title</label>

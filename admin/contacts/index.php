@@ -1,3 +1,4 @@
+<?php require('../config/config.php');   ?>
 <?php require('../includes/header.php'); ?>
 
 <?php require('../includes/navbar.php'); ?>
@@ -10,7 +11,7 @@
     if (isset($_GET['delete'])) {
     ?>
         <div class=" container alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Data is Deleted!</strong>
+            <strong>Contacts is Deleted!</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php
@@ -20,12 +21,12 @@
     ?>
 
   <div class="pagetitle">
-    <h1>Manage Files</h1>
+    <h1>Manage Contacts</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-        <li class="breadcrumb-item">Files</li>
-        <li class="breadcrumb-item active">Manage Files</li>
+        <li class="breadcrumb-item">Contacts</li>
+        <li class="breadcrumb-item active">Manage Contacts</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -36,38 +37,41 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Manage Files</h5>
+            <h5 class="card-title">Manage Contacts</h5>
 
             <!-- Table with stripped rows -->
-            <!-- <a class="btn btn-success btn-sm " href="index.php" role="button">Manage Abouts </a> -->
-            <a class="btn btn-primary btn-sm " href="create.php" role="button">Add Abouts </a>
-
+            <a class="btn btn-primary btn-sm " href="create.php" role="button">Add Contacts </a>
+            
             <table class="table datatable">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th>Image</th>
+                  <th>
+                    #
+                  </th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Subject</th>
+                  <th>Message</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
 
-                $select = 'SELECT *FROM abouts';
+                $select = 'SELECT *FROM contacts';
                 $result = mysqli_query($con, $select);
                 $i = 1;
                 while ($data = $result->fetch_assoc()) {
                 ?>
                   <tr>
                     <td><?php echo $i++; ?></td>
-                    <td><?php echo $data['top_title']; ?></td>
-                    <td><?php echo $data['top_desc']; ?></td>
-                    <td><img src="../uploads/<?php echo $data['img'] ?>" alt="" width="100" height="100"></td>
+                    <td><?php echo $data['name']; ?></td>
+                    <td><?php echo $data['email']; ?></td>
+                    <td><?php echo $data['subject']; ?></td>
+                    <td><?php echo $data['message']; ?></td>
                     <td>
                       <a class="btn btn-primary btn-sm " href="edit.php?id=<?php echo $data['id']; ?>" role="button">Edit </a>
-                      <a class="btn btn-danger btn-sm " onclick="return confirm ('Do you want to delete this data?');" href="delete.php?id=<?php echo $data['id']; ?>" role="button">Delete </a>
+                      <a class="btn btn-danger btn-sm " onclick="return confirm('Do you want to delete this user?');" href="delete.php?id=<?php echo $data['id']; ?>">Delete </a>
                     </td>
                   </tr>
                 <?php
