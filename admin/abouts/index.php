@@ -46,6 +46,8 @@
               <thead>
                 <tr>
                   <th>#</th>
+                  <th>Top_Title</th>
+                  <th>Top_Description</th>
                   <th>Title</th>
                   <th>Description</th>
                   <th>Image</th>
@@ -64,6 +66,8 @@
                     <td><?php echo $i++; ?></td>
                     <td><?php echo $data['top_title']; ?></td>
                     <td><?php echo $data['top_desc']; ?></td>
+                    <td><?php echo $data['title']; ?></td>
+                    <td><?php echo $data['description']; ?></td>
                     <td><img src="../uploads/<?php echo $data['img'] ?>" alt="" width="100" height="100"></td>
                     <td>
                       <a class="btn btn-primary btn-sm " href="edit.php?id=<?php echo $data['id']; ?>" role="button">Edit </a>

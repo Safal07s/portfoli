@@ -266,7 +266,7 @@
 
   <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#settings" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-journal-text"></i><span>Setti ngs</span><i class="bi bi-chevron-down ms-auto"></i>
+      <i class="bi bi-journal-text"></i><span>Settings</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="settings" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
@@ -277,6 +277,59 @@
       <li>
         <a href="settings/index.php">
           <i class="bi bi-circle"></i><span>Manage Settings</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Forms Nav -->
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#testimonials" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-journal-text"></i><span>Testimonials</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="testimonials" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="testimonials/create.php">
+          <i class="bi bi-circle"></i><span>Add Testimonials</span>
+        </a>
+      </li>
+      <li>
+        <a href="testimonials/index.php">
+          <i class="bi bi-circle"></i><span>Manage Testimonials</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Forms Nav -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#resume-Titles" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-journal-text"></i><span>Resume-Titles</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="resume-Titles" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="resume_Titles/create.php">
+          <i class="bi bi-circle"></i><span>Add Resume-Titles</span>
+        </a>
+      </li>
+      <li>
+        <a href="resume_titles/index.php">
+          <i class="bi bi-circle"></i><span>Manage Resume-titles</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Forms Nav -->
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#resume" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-journal-text"></i><span>Resume</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="resume" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="resume/create.php">
+          <i class="bi bi-circle"></i><span>Add Resume</span>
+        </a>
+      </li>
+      <li>
+        <a href="resume/index.php">
+          <i class="bi bi-circle"></i><span>Manage Resume</span>
         </a>
       </li>
     </ul>

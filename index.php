@@ -19,7 +19,7 @@ $hero_data= $result->fetch_assoc();
     <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
       <h1><?php echo $hero_data['title']; ?></h1>
       <h2><?php echo $hero_data['description']; ?></h2>
-      <a href="about.html" class="btn-about">About Me</a>
+      <a href="about.php" class="btn-about">About Me</a>
     </div>
   </section><!-- End Hero -->
 

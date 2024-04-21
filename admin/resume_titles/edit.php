@@ -7,12 +7,12 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Update SKills</h1>
+    <h1>Update Resume-Titles</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-        <li class="breadcrumb-item">SKills</li>
-        <li class="breadcrumb-item active">Update SKills</li>
+        <li class="breadcrumb-item">Resume-Titles</li>
+        <li class="breadcrumb-item active">Update Resume-Titles</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -23,12 +23,12 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Update SKills</h5>
+            <h5 class="card-title">Update Resume-Titles</h5>
 
             <?php
             if (isset($_GET['id'])) {
                 $id = $_GET['id'];
-                $show_query = "SELECT *FROM skills WHERE id='$id'";
+                $show_query = "SELECT *FROM resume_titles WHERE id='$id'";
                 $show_result = mysqli_query($con, $show_query);
                 // To get only one row data
                 $data = mysqli_fetch_assoc($show_result);
@@ -37,12 +37,12 @@
             
             if(isset($_POST['submit'])){
                 $title = $_POST['title'];
-                $description = $_POST['description'];
+                // $description = $_POST['description'];
                 // $password = $_POST['password'];
 
                 // validation to input field
-            if($title!= "" && $description!="" ){
-                $query =" UPDATE skills SET title='$title', description='$description'  WHERE id='$id'"; // variable
+            if($title!= ""  ){
+                $query =" UPDATE resume_titles SET title='$title'  WHERE id='$id'"; // variable
                 $result= mysqli_query ($con, $query); // connect to database
                 
 
@@ -50,7 +50,7 @@
             if ($result) {
                 ?>
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong>Skills is Updated</strong>
+                                <strong>Resume-Titles is Updated</strong>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         <?php
@@ -59,7 +59,7 @@
                         } else {
                         ?>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>Skills is not Updated</strong>
+                                <strong>Resume-Titles is not Updated</strong>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                 <?php
@@ -76,19 +76,13 @@
 
 
             <!-- Multi Columns Form -->
-            <a class="btn btn-success btn-sm " href="index.php" role="button">Manage Skills </a>
+            <a class="btn btn-success btn-sm " href="index.php" role="button">Manage Resume-Titles </a>
             <form class="row g-3" action="" method="POST" enctype="multipart/form-data">
               <div class="col-md-6">
                 <label for="inputName5" class="form-label">Title</label>
                 <input type="text" class="form-control" name="title" value="<?php echo $data['title']; ?>" id="inputName5">
               </div>
-              <div class="col-md-6">
-                <!-- <textarea name="description" id="" cols="30" rows="10">Description</textarea> -->
-                <label for="inputEmail5" class="form-label">Description</label>
-                <textarea class="form-control" name="description"   id="inputEmail5" cols="30" rows="3"> <?php echo $data['description']; ?></textarea>
               
-                <!-- <input type="textarea" class="form-control" name="description"  id="inputEmail5"> -->
-              </div>
              
               
               <div class="col-md-12">

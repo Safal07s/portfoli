@@ -20,12 +20,12 @@
     ?>
 
   <div class="pagetitle">
-    <h1>Manage Files</h1>
+    <h1>Manage Testimonials</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-        <li class="breadcrumb-item">Files</li>
-        <li class="breadcrumb-item active">Manage Files</li>
+        <li class="breadcrumb-item">Testimonials</li>
+        <li class="breadcrumb-item active">Manage Testimonials</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -36,34 +36,36 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Manage Files</h5>
+            <h5 class="card-title">Manage Testiomonials</h5>
 
             <!-- Table with stripped rows -->
             <table class="table datatable">
-            <a class="btn btn-primary btn-sm " href="create.php" role="button">Add Files </a>
+            <a class="btn btn-primary btn-sm " href="create.php" role="button">Add Testiomonials </a>
 
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Title</th>
-                  <th>Description</th>
                   <th>Image</th>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Message</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
 
-                $select = 'SELECT *FROM files';
+                $select = 'SELECT *FROM testimonials';
                 $result = mysqli_query($con, $select);
                 $i = 1;
                 while ($data = $result->fetch_assoc()) {
                 ?>
                   <tr>
                     <td><?php echo $i++; ?></td>
-                    <td><?php echo $data['title']; ?></td>
-                    <td><?php echo $data['description']; ?></td>
-                    <td><img src="../uploads/<?php echo $data['img_link'] ?>" alt="" width="100" height="100"></td>
+                    <td><img src="../uploads/<?php echo $data['img'] ?>" alt="" width="100" height="100"></td>
+                    <td><?php echo $data['name']; ?></td>
+                    <td><?php echo $data['position']; ?></td>
+                    <td><?php echo $data['message']; ?></td>
                     <td>
                       <a class="btn btn-primary btn-sm " href="edit.php?id=<?php echo $data['id']; ?>" role="button">Edit </a>
                       <a class="btn btn-danger btn-sm " onclick="return confirm('Do you want to delete this file?');" href="delete.php?id=<?php echo $data['id']; ?>" role="button">Delete </a>

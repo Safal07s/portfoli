@@ -89,8 +89,7 @@
              
               
               <div class="col-md-12">
-                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
+                <button type="submit" class="btn btn-danger" name="submit">Update</button>
               </div>
             </form><!-- End Multi Columns Form -->
 

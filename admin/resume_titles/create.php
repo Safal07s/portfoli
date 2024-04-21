@@ -4,16 +4,15 @@
 
 <?php require('../includes/sidebar.php'); ?>
 
-
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Create Services</h1>
+    <h1>Create Resume-Titles</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-        <li class="breadcrumb-item">Services</li>
-        <li class="breadcrumb-item active">Create Services</li>
+        <li class="breadcrumb-item">Resume-Titles</li>
+        <li class="breadcrumb-item active">Create Resume-Titles</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -24,26 +23,25 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Create Services</h5>
+            <h5 class="card-title">Create Resume-Titles</h5>
 
             <?php
 
             if (isset($_POST['submit'])) {
-              $icon = $_POST['icon'];
               $title = $_POST['title'];
-              $description = $_POST['description'];
+              // $description = $_POST['description'];
               // $username = $_POST['username'];
               // $password = md5($_POST['password']);
 
-              if ($icon != "" && $title != ""  && $description != "") {
-                $insert = "INSERT INTO services(icon, title, description)
-VALUES('$icon','$title',  '$description')";
+              if ($title != "") {
+                $insert = "INSERT INTO resume_titles(title)
+VALUES('$title')";
                 $result = mysqli_query($con, $insert);
 
                 if ($result) {
             ?>
                   <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Services are created</strong>
+                    <strong>Resume-Title is created</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
                 <?php
@@ -52,7 +50,7 @@ VALUES('$icon','$title',  '$description')";
                 } else {
                 ?>
                   <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Services is not created</strong>
+                    <strong>Resume-Title is not created</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
             <?php
@@ -70,22 +68,13 @@ VALUES('$icon','$title',  '$description')";
 
             <!-- Multi Columns Form -->
             <form class="row g-3" action="" method="POST" enctype="multipart/form-data">
-              <div class="col-md-6">
-                <label for="inputName5" class="form-label">Icon</label>
-                <input type="text" class="form-control" name="icon" id="inputName5">
-              </div>
-              <div class="col-md-6">
+              <div class="mb-3">
                 <label for="inputName5" class="form-label">Title</label>
                 <input type="text" class="form-control" name="title" id="inputName5">
               </div>
-              <div class="col-md-6">
-                <!-- <textarea name="description" id="" cols="30" rows="10">Description</textarea> -->
-                <label for="inputEmail5" class="form-label">Description</label>
-                <textarea id="summernote" name="description" class="form-control" id="inputEmail5" cols="30" rows="3"></textarea>
-                <!-- <input type="textarea" class="form-control" name="description" id="inputEmail5"> -->
-              </div>
-
-
+            
+             
+              
               <div class="col-md-12">
                 <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                 <button type="reset" class="btn btn-secondary">Reset</button>
@@ -100,11 +89,5 @@ VALUES('$icon','$title',  '$description')";
   </section>
 
 </main><!-- End #main -->
-
-<script>
-  $(document).ready(function() {
-    $('#summernote').summernote();
-  });
-</script>
 
 <?php require('../includes/footer.php'); ?>

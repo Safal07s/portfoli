@@ -7,12 +7,12 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Form Layouts</h1>
+    <h1>Create Testimonilas</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-        <li class="breadcrumb-item">Abouts</li>
-        <li class="breadcrumb-item active">Create Abouts</li>
+        <li class="breadcrumb-item">Testimonilas</li>
+        <li class="breadcrumb-item active">Add Testimonilas</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -20,77 +20,52 @@
     <div class="row">
       <div class="col-lg-12">
 
+
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Create Abouts</h5>
+            <h5 class="card-title">Add Testimonilas</h5>
+
 
             <?php
-
 
             if (isset($_POST['submit'])) {
-              $top_title = $_POST['top_title'];
-              $top_description = $_POST['top_desc'];
-              $title = $_POST['title'];
-              $description = $_POST['description'];
-              $img = $_POST['img'];
-              // $username = $_POST['username'];
-              // $password = md5($_POST['password']);
 
-              if ($title != ""  && $description != "") {
-                $insert = "INSERT INTO abouts(top_title, top_desc, title, description, img)
-VALUES('$top_title',  '  $top_description', '$title', '$description', '$img')";
-                $result = mysqli_query($con, $insert);
+              $img= $_POST['img'];
+              $name = $_POST['name'];
+              $position = $_POST['position'];
+              $message = $_POST['message'];
 
-                if ($result) {
-            ?>
-                  <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Abouts are created</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
-                <?php
-                  // header("Refresh:2; URL=index.php?success");
-                  echo "<meta http-equiv=\"refresh\" content=\"2;URL=index.php\">";
-                } else {
-                ?>
-                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Abouts is not created</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
-            <?php
-                  // header("Refresh:2; URL=create.php?error");
-                  echo "<meta http-equiv=\"refresh\" content=\"2;URL=create.php?error\">";
-                }
-              } else {
+              
+              if ($img!="" && $name != ""  && $position != "" && $message != "") {
 
-                header("Refresh:0; URL=create.php?empty");
-              }
+                      $insert = "INSERT INTO testimonials(img,name,position,message)  
+                    VALUES ( '$img','$name', '$position','$message')";
+                      $result = mysqli_query($con, $insert);
+
+
+                      if ($result) {
+                      ?>
+                      <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading"><?php echo "Testimonilas is submitted"; ?></h4>
+                        </div>
+                      <?php
+                        
+
+                        // header("Refresh:2; URl=index.php?success");
+                        echo "<meta http-equiv=\"refresh\" content=\"2;URL=index.php\">";
+                      } else {
+
+                        echo "Testimonilas is not submitted";
+                      }
+                    }
             }
-
 
             ?>
             <form action="" method="POST" enctype="multipart/form-data">
-              <div class="mb-3">
-                <label for="input1" class="form-label">Top Title</label>
-                <input type="text" class="form-control" name="top_title" id="input1" aria-describedby="emailHelp">
-              </div>
-              <div class="mb-3">
-                <label for="input1" class="form-label">Top Description</label>
-                <input type="text" class="form-control" name="top_desc" id="input1" aria-describedby="emailHelp">
-              </div>
-              <div class="mb-3">
-                <label for="input1" class="form-label">Title</label>
-                <input type="text" class="form-control" name="title" id="input1" aria-describedby="emailHelp">
-              </div>
-              <div class="mb-3">
-                <label for="input1" class="form-label">Description</label>
-                <textarea name="description" class="form-control" id="input1" cols="30" rows="3"></textarea>
-                <!-- <input type="text"  name="description" id="" aria-describedby="emailHelp"> -->
-              </div>
-
-              <!-- Modal trigger button -->
-
-              <!-- Modal Body -->
-              <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+              <!-- <div class="mb-3">
+                <label for="input1" class="form-label">Image</label>
+                <input type="file" class="form-control" name="dataFile" id="input1" aria-describedby="emailHelp">
+              </div> -->
               <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
                   <div class="modal-content">
@@ -149,9 +124,21 @@ VALUES('$top_title',  '  $top_description', '$title', '$description', '$img')";
                 </button>
               </div>
 
+              
+              <div class="mb-3">
+                <label for="input1" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" id="input1" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="input1" class="form-label">Position</label>
+                <input type="text" class="form-control" name="position" id="input1" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="message" rows="3"></textarea>
+              </div>
 
               <button type="submit" class="btn btn-danger btn-sm" name="submit">Submit</button>
-
             </form>
           </div>
         </div>
@@ -159,10 +146,7 @@ VALUES('$top_title',  '  $top_description', '$title', '$description', '$img')";
       </div>
     </div>
   </section>
-
-</main><!-- End #main -->
-
-<script>
+  <script>
   {
     function firstImg() {
       let selectImg = document.querySelector('input[name=fileName]:checked').value;
@@ -171,5 +155,7 @@ VALUES('$top_title',  '  $top_description', '$title', '$description', '$img')";
 
   }
 </script>
+
+</main><!-- End #main -->
 
 <?php require('../includes/footer.php'); ?>

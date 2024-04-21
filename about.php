@@ -45,22 +45,46 @@ require('includes/navbar.php');
               if ($settings_data['site_key'] == 'age') {
                 $age = $settings_data['site_value'];
               }
+            
+              if ($settings_data['site_key'] == 'Website') {
+                $Website = $settings_data['site_value'];
+              }
+              if ($settings_data['site_key'] == 'phone') {
+                $phone = $settings_data['site_value'];
+              }
+              if ($settings_data['site_key'] == 'city') {
+                $city = $settings_data['site_value'];
+              }
+              if ($settings_data['site_key'] == 'degree') {
+                $degree = $settings_data['site_value'];
+              }
+              if ($settings_data['site_key'] == 'freelance') {
+                $freelance = $settings_data['site_value'];
+              }
+              if ($settings_data['site_key'] == 'skills') {
+                $skills = $settings_data['site_value'];
+              }
+              if ($settings_data['site_key'] == 'facts') {
+                $facts = $settings_data['site_value'];
+              }
+              if ($settings_data['site_key'] == 'testimonials') {
+                $testimonials = $settings_data['site_value'];
+              }
             }
             ?>
             <div class="col-lg-6">
               <ul>
                 <li><i class="bi bi-rounded-right"></i> <strong>Birthday:</strong> <?php echo $birthday;?></li>
-                <li><i class="bi bi-rounded-right"></i> <strong>Website:</strong> www.example.com</li>
-                <li><i class="bi bi-rounded-right"></i> <strong>Phone:</strong> +123 456 7890</li>
-                <li><i class="bi bi-rounded-right"></i> <strong>City:</strong> City : New York, USA</li>
+                <li><i class="bi bi-rounded-right"></i> <strong>Website:</strong> <?php echo $Website; ?></li>
+                <li><i class="bi bi-rounded-right"></i> <strong>Phone:</strong> <?php echo $phone;?></li>
+                <li><i class="bi bi-rounded-right"></i> <strong>City:</strong> <?php echo $city;?> </li>
               </ul>
             </div>
             <div class="col-lg-6">
               <ul>
                 <li><i class="bi bi-rounded-right"></i> <strong>Age:</strong> <?php echo $age;?></li>
-                <li><i class="bi bi-rounded-right"></i> <strong>Degree:</strong> Master</li>
-                <li><i class="bi bi-rounded-right"></i> <strong>PhEmailone:</strong> email@example.com</li>
-                <li><i class="bi bi-rounded-right"></i> <strong>Freelance:</strong> Available</li>
+                <li><i class="bi bi-rounded-right"></i> <strong>Degree:</strong> <?php echo $degree;?> </li>
+                <li><i class="bi bi-rounded-right"></i> <strong>Freelance:</strong> <?php echo $freelance;?></li>
               </ul>
             </div>
           </div>
@@ -74,10 +98,14 @@ require('includes/navbar.php');
   <section id="skills" class="skills">
     <div class="container" data-aos="fade-up">
 
+
       <div class="section-title">
         <h2>Skills</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-      </div>
+        <p>
+          <?php echo $skills;
+           ?>
+        </p>
+        </div>
 
       <div class="row skills-content">
         <?php
@@ -110,8 +138,10 @@ require('includes/navbar.php');
 
       <div class="section-title">
         <h2>Facts</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-      </div>
+        <p>
+          <?php echo $facts; ?>
+        </p>
+        </div>
 
       <div class="row counters">
         <?php
@@ -136,77 +166,41 @@ require('includes/navbar.php');
 
       <div class="section-title">
         <h2>Testimonials</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-      </div>
+        <p>
+          <?php  echo $testimonials;?>
+         
+        </p>
+        </div>
 
       <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
         <div class="swiper-wrapper">
-
+        <?php
+        $testimonials = "SELECT *FROM testimonials";
+        $testimonials_result = mysqli_query($con, $testimonials);
+        while ($testimonials_data = $testimonials_result->fetch_array()) {
+        ?>
           <div class="swiper-slide">
             <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-              <h3>Saul Goodman</h3>
-              <h4>Ceo &amp; Founder</h4>
+              <img src="admin/uploads/<?php echo $testimonials_data['img'];  ?>" class="testimonial-img" alt="">
+              <h3><?php echo $testimonials_data['name']; ?></h3>
+              <h4><?php echo $testimonials_data['position']; ?></h4>
               <p>
                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                <?php echo $testimonials_data['message']; ?>
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
           </div><!-- End testimonial item -->
 
-          <div class="swiper-slide">
-            <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-              <h3>Sara Wilsson</h3>
-              <h4>Designer</h4>
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-            </div>
-          </div><!-- End testimonial item -->
+        <?php
+        }
+        ?>
 
-          <div class="swiper-slide">
-            <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-              <h3>Jena Karlis</h3>
-              <h4>Store Owner</h4>
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-            </div>
-          </div><!-- End testimonial item -->
+        <!-- ##### -->
+          
 
-          <div class="swiper-slide">
-            <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-              <h3>Matt Brandon</h3>
-              <h4>Freelancer</h4>
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-            </div>
-          </div><!-- End testimonial item -->
-
-          <div class="swiper-slide">
-            <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-              <h3>John Larson</h3>
-              <h4>Entrepreneur</h4>
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-            </div>
-          </div><!-- End testimonial item -->
-
+            
+<!-- ///////// -->
         </div>
         <div class="swiper-pagination"></div>
       </div>

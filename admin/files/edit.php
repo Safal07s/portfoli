@@ -25,74 +25,127 @@
           <div class="card-body">
             <h5 class="card-title">Update Files</h5>
 
+     
+            <!-- copied -->
+
             <?php
+
             if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                $show_query = "SELECT *FROM files WHERE id='$id'";
-                $show_result = mysqli_query($con, $show_query);
-                // To get only one row data
-                $data = mysqli_fetch_assoc($show_result);
-                // $data = $show_result->fetch_assoc();
+
+              $id = $_GET['id'];
+              $query = "SELECT * FROM files WHERE id=$id";
+              $result = mysqli_query($con, $query);
+              $data = $result->fetch_assoc();
             }
-            
-            if(isset($_POST['submit'])){
-                $title = $_POST['title'];
-                $description = $_POST['description'];
-                $img = $_POST['img_link'];
-                // $password = $_POST['password'];
 
-                // validation to input field
-            if($title!= "" && $description!="" && $img !="" ){
-                $query =" UPDATE files SET title='$title', description='$description', img-link='$img'  WHERE id='$id'"; // variable
-                $result= mysqli_query ($con, $query); // connect to database
-                
+            ?>
 
-        
-            if ($result) {
-                ?>
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong>Files is Updated</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php
-                            // header("Refresh:2; URL=index.php?success");
-                            echo "<meta http-equiv=\"refresh\" content=\"2;URL=index.php?suucces\">";
-                        } else {
+            <?php
+
+            if (isset($_POST['submit'])) {
+              $title = $_POST['title'];
+              $file_name = $_FILES['dataFile']['name'];
+              $file_size = $_FILES['dataFile']['size'];
+              $description = $_POST['description'];
+
+              // submit previous file
+              if ($title != "" && $file_name == "" && $description != "") {
+                $querry = "UPDATE  files  SET  title='$title', description='$description' WHERE id='$id'";
+
+                $result = mysqli_query($con, $querry);
+                if ($result) {
+                  echo "Updated title and description";
+                } else
+                  echo "not updated";
+              }
+
+              // submit new file & replace old file
+              if ($title != "" && $file_name != "" && $description != "") {
+
+                if ($file_size < 2000000) {
+                  $explode = explode('.', $file_name); // explode cuts the name after the dot.
+                  $file = strtolower($explode[0]);
+                  $ext = strtolower($explode[1]);
+                  $replace = str_replace(' ', '', $file); //to remove space
+                  $finalname = $replace . time() . '.' . $ext; //concating names with time
+                  $target_file = '../uploads/' . $finalname;
+                  if ($ext == 'jpg' || $ext == 'png' || $ext == 'jpeg') {
+
+                    // replace old file
+                    $oldfilelink = $data['img_link']; //file link from database
+                    $finallink = '../uploads/' . $oldfilelink;
+                    unlink($finallink);
+
+                    if (move_uploaded_file($_FILES['dataFile']['tmp_name'], $target_file)) {
+
+                      $querry = "UPDATE  files  SET  title='$title', img_link='$finalname', type='$ext',description='$description'  WHERE id='$id'";
+                      $result = mysqli_query($con, $querry);
+                      if ($result) {
                         ?>
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>Files is not Updated</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                <?php
-                            header("Refresh:2; URL=create.php?error");
-                        }
+                        <div class="alert alert-success" role="alert">
+                          <h4 class="alert-heading">File is updated.</h4>
+                          </div>
+                        <?php
+                        echo "<meta http-equiv=\"refresh\" content=\"2;URL=index.php\">";
+                      } else {
+                        echo "File is not uploaded";
+                      }
                     } else {
-
-                        header("Refresh:0; URL=create.php?empty");
-                        // echo "<meta http-equiv=\"refresh\" content=\"2;URL=.php?empty\">";
-
+                      echo "file upload failed";
                     }
-                }
+                  } else {
 
+                    echo "extension doesn't mattch";
+                  }
+                } else {
+            ?>
+                  <div class="alert alert-primary" role="alert">
+                    file size must be less than 2MB
+                  </div>
+
+                <?php
+
+                }
+              } else {
                 ?>
-      
-      <a class="btn btn-success btn-sm " href="index.php" role="button">Manage Files </a>
+                <div class="alert alert-primary" role="alert">
+                  Updated Succsefully
+                </div>
+
+            <?php
+                echo "<meta http-equiv=\"refresh\" content=\"2;URL=index.php\">";
+              }
+            }
+            ?>
+
+
+            <a class="btn btn-success btn-sm " href="index.php" role="button">Manage Files </a>
             <form action="" method="POST" enctype="multipart/form-data">
               <div class="mb-3">
                 <label for="input1" class="form-label">Title</label>
                 <input type="text" class="form-control" name="title" value="<?php echo $data['title']; ?>" id="input1" aria-describedby="emailHelp">
               </div>
-              <div class="mb-3">
-                <label for="input1" class="form-label">Image</label>
-                <input type="file" class="form-control" name="dataFile" value="<?php echo $data['img_link']; ?>" id="input1" aria-describedby="emailHelp">
-              </div>
 
               <div class="mb-3">
                 <label for="input1" class="form-label">Description</label>
-                <textarea class="form-control" id="input1" name="description"  rows="3"><?php echo $data['description']; ?></textarea>
+                <textarea class="form-control" id="input1" name="description" rows="3"><?php echo $data['description']; ?></textarea>
               </div>
 
-              <button type="submit" class="btn btn-danger btn-sm" name="submit">Submit</button>
+              <div class="mb-3">
+                <img src="../uploads/<?php echo $data['img_link'] ?>" alt="" width="100" height="100">
+              </div>
+
+              <div class="mb-3">
+                <label for="input1" class="form-label">Image</label>
+                <input type="file" class="form-control" name="dataFile" value="" id="input1" aria-describedby="emailHelp">
+
+              </div>
+
+
+
+
+
+              <button type="submit" class="btn btn-danger btn-sm" name="submit">Update</button>
             </form>
           </div>
         </div>

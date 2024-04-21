@@ -174,6 +174,36 @@ CREATE TABLE IF NOT EXISTS `settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 COMMIT;
 -- end setting--
+
+-- start resume titles--
+DROP TABLE IF EXISTS `resume_titles`;
+CREATE TABLE IF NOT EXISTS `resume_titles` (
+  `id` int(11) NOT NULL,
+  `title` varchar(30) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
+   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+COMMIT;
+-- end resume titles--
+
+-- start resume--
+DROP TABLE IF EXISTS `resume`;
+CREATE TABLE IF NOT EXISTS `resume` (
+  `id` int(11) NOT NULL,
+  `resume_title_id` int(11) NOT NULL,
+  `title` varchar(30) NOT NULL,
+  `start_date` varchar(30) NOT NULL,
+  `end_date` varchar(30) NOT NULL,
+  `org_name` varchar(30) NOT NULL,
+  `description` int(11) NOT NULL DEFAULT 1,
+   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+COMMIT;
+-- end resume--
 --
 -- AUTO_INCREMENT for dumped tables
 --

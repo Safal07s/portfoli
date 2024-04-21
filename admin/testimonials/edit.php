@@ -7,54 +7,49 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Update Abouts</h1>
+    <h1>Update Testimonials</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-        <li class="breadcrumb-item">Abouts</li>
-        <li class="breadcrumb-item active">Update Abouts</li>
+        <li class="breadcrumb-item">Testimonials</li>
+        <li class="breadcrumb-item active">Update File</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
   <section class="section">
     <div class="row">
       <div class="col-lg-12">
+        <!-- ############################################################################## -->
 
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Update abouts</h5>
+            <h5 class="card-title">Add Testimonilas</h5>
             <?php
             if (isset($_GET['id'])) {
               $id = $_GET['id'];
-              $show_query = "SELECT *FROM abouts WHERE id='$id'";
+              $show_query = "SELECT *FROM testimonials WHERE id='$id'";
               $show_result = mysqli_query($con, $show_query);
-              // To get only one row data
               $data = mysqli_fetch_assoc($show_result);
-              // $data = $show_result->fetch_assoc();
             }
 
             if (isset($_POST['submit'])) {
-              $top_title = $_POST['top_title'];
-              $title = $_POST['title'];
               $img = $_POST['img'];
-              $top_description = $_POST['top_desc'];
-              $description = $_POST['description'];
-              // $password = $_POST['password'];
+              $name = $_POST['name'];
+              $position = $_POST['position'];
+              $message = $_POST['message'];
 
-              // validation to input field
-              if ($top_title != "" && $top_description !="" && $img != "" && $title != "" && $description != "" ) {
-                $query = " UPDATE abouts SET top_title='$top_title', top_desc='$top_description', img='$img', title='$title', description='$description'  WHERE id='$id'"; // variable
+
+
+              if ($img != "" && $name != "" && $position != "" && $message != "") {
+                $query = " UPDATE testimonials SET  img='$img', name='$name', position='$position', message-='$message'  WHERE id='$id'"; // variable
                 $result = mysqli_query($con, $query); // connect to database
-              // validation to input field
-              if ($top_title != "" && $top_description !=""   && $title != "" && $description != "" ) {
-                $query = " UPDATE abouts SET top_title='$top_title', top_desc='$top_description', title='$title', description='$description'  WHERE id='$id'"; // variable
-                $result = mysqli_query($con, $query); // connect to database
+                // validation to input field
 
                 if ($result) {
-            ?>
+                ?>
                   <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Abouts is Updated</strong>
+                    <strong>Testimonials is Updated</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
                 <?php
@@ -64,11 +59,13 @@
                 } else {
                 ?>
                   <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Abouts is not Updated</strong>
+                    <strong>Testimonials is not Updated</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
+                  </div> 
             <?php
-                  header("Refresh:2; URL=create.php?error");
+                  echo "<meta http-equiv=\"refresh\" content=\"2;URL=edit.php?error\">";
+
+                  // header("Refresh:2; URL=create.php?error");
                 }
               } else {
 
@@ -76,42 +73,34 @@
                 echo "<meta http-equiv=\"refresh\" content=\"2;URL=edit.php?empty\">";
               }
             }
-            
-          }
-            
+
 
             ?>
 
-          
 
-            <a class="btn btn-success btn-sm " href="index.php" role="button">Manage abouts </a>
+
+
+            <a class="btn btn-success btn-sm " href="index.php" role="button">Manage Testimoials </a>
             <form action="" method="POST" enctype="multipart/form-data">
-              <div class="mb-3">
-                <label for="input1" class="form-label">Top-title</label>
-                <input type="text" class="form-control" value="<?php echo $data['top_title']; ?>" name="top_title" id="input1" aria-describedby="emailHelp">
-              </div>
-              <div class="mb-3">
-                <label for="input1" class="form-label">Top-Description</label>
-                <input type="text" class="form-control" value="<?php echo $data['top_desc']; ?>" name="top_desc" id="input1" aria-describedby="emailHelp">
-              </div>
-              <div class="mb-3">
-                <label for="input1" class="form-label">Title</label>
-                <input type="text" class="form-control" value="<?php echo $data['title']; ?>" name="title" id="input1" aria-describedby="emailHelp">
-              </div>
-              <!-- <div class="mb-3">
-                <label for="input1" class="form-label">Image</label>
-                <input type="file" class="form-control" value="#" name="img" id="input1" aria-describedby="emailHelp">
-              </div> -->
 
 
               <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"><?php echo $data['description']; ?></textarea>
+                <label for="input1" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" value="<?php echo $data['name']; ?>" id="input1" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="input1" class="form-label">Position</label>
+                <input type="text" class="form-control" name="position" value="<?php echo $data['position']; ?>" id="input1" aria-describedby="emailHelp">
               </div>
 
               <div class="mb-3">
+                <label for="input1" class="form-label">Message</label>
+                <textarea class="form-control" id="input1" name="message" rows="3"><?php echo $data['message']; ?></textarea>
+              </div>
+              <div class="choosen-image py-4 ">
                 <img src="../uploads/<?php echo $data['img'] ?>" alt="" width="100" height="100">
               </div>
+
 
               <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
@@ -171,16 +160,19 @@
                 </button>
               </div>
 
-              <button type="submit" class="btn btn-danger btn-sm" name="submit">Update</button>
 
+
+
+              <button type="submit" class="btn btn-danger btn-sm" name="submit">Update</button>
             </form>
           </div>
         </div>
 
       </div>
     </div>
-  </section>
 
+
+  </section>
   <script>
     {
       function firstImg() {
